@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from '../ContactList/ContactList.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { delContact } from 'features/Contacts/Contact.slice';
 
-const Contact = ({ name, number, id, handleDelete }) => {
+const Contact = ({ name, number, id, onDelContact }) => {
   return (
     <li className={css.item}>
       <span>
@@ -12,7 +14,7 @@ const Contact = ({ name, number, id, handleDelete }) => {
         className={css.contactButton}
         type="button"
         onClick={() => {
-          handleDelete(id);
+          onDelContact(id);
         }}
       >
         Delete
@@ -21,7 +23,14 @@ const Contact = ({ name, number, id, handleDelete }) => {
   );
 };
 
-export const ContactList = ({ contacts, handleDelete }) => {
+export const ContactList = ({ contacts }) => {
+  const contactsList = useSelector(state => state.contacts.contacts);
+  console.log(contactsList);
+  const dispatch = useDispatch();
+  const onDelContact = id => {
+    dispatch(delContact(id));
+  };
+
   return (
     <ul>
       {contacts.map(contact => {
@@ -30,7 +39,7 @@ export const ContactList = ({ contacts, handleDelete }) => {
             name={contact.name}
             number={contact.number}
             id={contact.id}
-            handleDelete={handleDelete}
+            onDelContact={onDelContact}
             key={contact.id}
           ></Contact>
         );
@@ -46,5 +55,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  handleDelete: PropTypes.func.isRequired,
+  // handleDelete: PropTypes.func.isRequired,
 };
