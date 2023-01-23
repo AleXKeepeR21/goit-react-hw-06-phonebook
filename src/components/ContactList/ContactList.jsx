@@ -33,7 +33,7 @@ export const ContactList = ({ contacts }) => {
 
   return (
     <ul>
-      {contacts.map(contact => {
+      {contactsList.map(contact => {
         return (
           <Contact
             name={contact.name}
