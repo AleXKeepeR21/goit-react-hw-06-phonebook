@@ -1,11 +1,18 @@
 // import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from '../Filter/Filter.module.css';
+import { useDispatch } from 'react-redux';
+import { setQuery } from 'features/Contacts/Contact.slice';
 
-export function Filter({ onFilter }) {
-  const handleChangeFilter = event => {
-    onFilter(event.currentTarget.value);
+export function Filter() {
+  const dispatch = useDispatch();
+  const onQueryChanged = query => {
+    dispatch(setQuery(query));
   };
+
+  // const handleChangeFilter = event => {
+  //   onFilter(event.currentTarget.value);
+  // };
 
   return (
     <label className={css.filterLabel}>
@@ -15,7 +22,7 @@ export function Filter({ onFilter }) {
         type="text"
         name="filter"
         placeholder="Search contact"
-        onChange={handleChangeFilter}
+        onChange={evt => onQueryChanged(evt.target.value)}
       ></input>
     </label>
   );

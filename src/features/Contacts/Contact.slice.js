@@ -17,8 +17,11 @@ const contactSlice = createSlice({
         contact => contact.id !== action.payload
       );
     },
+    setQuery: (state, action) => {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { addContact, delContact } = contactSlice.actions;
+export const { addContact, delContact, setQuery } = contactSlice.actions;
 export default contactSlice.reducer;
