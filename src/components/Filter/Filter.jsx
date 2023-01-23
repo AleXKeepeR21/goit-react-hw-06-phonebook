@@ -4,8 +4,16 @@ import css from '../Filter/Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setQuery } from 'features/Contacts/Contact.slice';
 
+export const filteredContacts = state => {
+  const normalizedFilter = state.contacts.filter.toLowerCase();
+  return state.contacts.contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(normalizedFilter);
+  });
+};
+
 export function Filter() {
   const dispatch = useDispatch();
+
   const onQueryChanged = query => {
     dispatch(setQuery(query));
   };

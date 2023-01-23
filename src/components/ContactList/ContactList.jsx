@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import css from '../ContactList/ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { delContact } from 'features/Contacts/Contact.slice';
+import { filteredContacts } from 'components/Filter/Filter';
 
 const Contact = ({ name, number, id, onDelContact }) => {
   return (
@@ -23,8 +24,8 @@ const Contact = ({ name, number, id, onDelContact }) => {
   );
 };
 
-export const ContactList = ({ contacts }) => {
-  const contactsList = useSelector(state => state.contacts.contacts);
+export const ContactList = () => {
+  const contactsList = useSelector(filteredContacts);
   console.log(contactsList);
   const dispatch = useDispatch();
   const onDelContact = id => {
