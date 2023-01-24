@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import css from '../ContactList/ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { delContact } from 'features/Contacts/Contact.slice';
-import { filteredContacts } from 'components/Filter/Filter';
+import { filteredContacts } from 'features/Contacts/selector';
 
 const Contact = ({ name, number, id, onDelContact }) => {
   return (

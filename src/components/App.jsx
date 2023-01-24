@@ -4,6 +4,7 @@ import ContactForm from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
 
 export function App() {
   const [contacts, setContacts] = useState([]);
@@ -21,6 +22,8 @@ export function App() {
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
+
+  const contactsList = useSelector(state => state.contacts.contacts);
 
   const addNewContacts = () => {
     const newContacts = contacts.filter(contact => {
@@ -59,6 +62,12 @@ export function App() {
         backgroundColor: 'rgba(0, 0, 255, 0.032)',
       }}
     >
+      <>
+        {contactsList.length > 0 && (
+          <h3>You have {contactsList.length} contast(s)</h3>
+        )}
+      </>
+
       <h1>Phonebook</h1>
       <ContactForm onSubmit={handleSubmit} />
       <h2>Contacts</h2>
