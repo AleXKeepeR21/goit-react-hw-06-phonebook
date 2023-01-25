@@ -26,7 +26,7 @@ const Contact = ({ name, number, id, onDelContact }) => {
 
 export const ContactList = () => {
   const contactsList = useSelector(filteredContacts);
-  // console.log(contactsList);
+
   const dispatch = useDispatch();
   const onDelContact = id => {
     dispatch(delContact(id));
@@ -56,5 +56,4 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  // handleDelete: PropTypes.func.isRequired,
 };

@@ -1,9 +1,8 @@
-// import React, { Component } from 'react';
 import { useEffect, useState } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-// import { nanoid } from 'nanoid';
+
 import { useSelector } from 'react-redux';
 
 export function App() {
@@ -24,30 +23,6 @@ export function App() {
   }, [contacts]);
 
   const contactsList = useSelector(state => state.contacts.contacts);
-
-  // const addNewContacts = () => {
-  //   const newContacts = contacts.filter(contact => {
-  //     return contact.name.toLowerCase().includes(filter.toLowerCase());
-  //   });
-  //   return newContacts;
-  // };
-
-  // const handleSubmit = ({ name, number }) => {
-  //   const contact = { id: nanoid(), name, number };
-  //   if (contacts.some(e => e.name === name)) {
-  //     return alert(`${name} is already in contacts!`);
-  //   }
-
-  //   setContacts([contact, ...contacts]);
-  // };
-
-  // const handleDelete = event => {
-  //   setContacts(contacts.filter(contact => contact.id !== event));
-  // };
-
-  // const addFilter = filterValue => {
-  //   setFilter(filterValue);
-  // };
 
   return (
     <div

@@ -9,8 +9,7 @@ export default function ContactForm() {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  // const contactsList = useSelector(state => state.contacts.contacts);
-  // console.log(contactsList);
+
   const onAddNewContact = () => {
     const newContact = { id: nanoid(), name: name, number: number };
     dispatch(addContact(newContact));
@@ -27,19 +26,6 @@ export default function ContactForm() {
   const handleChangeName = evt => {
     setName(evt.currentTarget.value);
   };
-
-  // const handleSubmit = evt => {
-  //   evt.preventDefault();
-
-  //   const contact = { name: name, number: number };
-  //   onSubmit(contact);
-
-  //   reset();
-  // };
-  // const reset = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
 
   return (
     <form className={css.form} onSubmit={onAddNewContact}>
@@ -73,11 +59,7 @@ export default function ContactForm() {
           className={css.formNumber}
         />
       </label>
-      <button
-        className={css.formButton}
-        type="submit"
-        // onClick={onAddNewContact}
-      >
+      <button className={css.formButton} type="submit">
         Add contact
       </button>
     </form>
