@@ -42,7 +42,7 @@ export default function ContactForm() {
   // };
 
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={onAddNewContact}>
       <label className={css.formLabel} htmlFor={NameInputId}>
         Name
         <input
@@ -76,7 +76,7 @@ export default function ContactForm() {
       <button
         className={css.formButton}
         type="submit"
-        onClick={onAddNewContact}
+        // onClick={onAddNewContact}
       >
         Add contact
       </button>
