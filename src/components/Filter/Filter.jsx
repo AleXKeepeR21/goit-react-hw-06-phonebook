@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from '../Filter/Filter.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from 'features/Contacts/Contact.slice';
 
 // export const filteredContacts = state => {
@@ -13,7 +13,7 @@ import { setQuery } from 'features/Contacts/Contact.slice';
 
 export function Filter() {
   const dispatch = useDispatch();
-
+  const filter = useSelector(state => state.contacts.filter);
   const onQueryChanged = query => {
     dispatch(setQuery(query));
   };
@@ -30,6 +30,7 @@ export function Filter() {
         type="text"
         name="filter"
         placeholder="Search contact"
+        value={filter}
         onChange={evt => onQueryChanged(evt.target.value)}
       ></input>
     </label>
@@ -55,6 +56,6 @@ export function Filter() {
 //     );
 //   }
 // }
-Filter.propTypes = {
-  onFilter: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   onFilter: PropTypes.func.isRequired,
+// };
